@@ -1,0 +1,77 @@
+/* Add your custom CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.navigation li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    color: #007bff;
+}
+
+.book-list {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.book-list th,
+.book-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.book-list th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+form {
+    display: inline;
+}
+
+/* Custom style for "Return" button */
+input[type="submit"] {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #c82333;
+}

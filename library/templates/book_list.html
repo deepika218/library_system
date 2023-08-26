@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'add_book.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Books List</h1>
+        </div>
+        <ul class="navigation">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'add_book' %}">Add Book</a></li>
+            <li><a href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a href="{% url 'add_librarian' %}">Add Librarian</a></li>
+            <li><a href="{% url 'borrow_book' %}">Borrow Book</a></li>
+            <li><a href="{% url 'return_book' %}">Return Book</a></li>
+            <li><a href="{% url 'book_list' %}">List All Books</a></li>
+        </ul>
+        <table class="book-list">
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Available Copies</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.available_copies }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrow Book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'borrow_book.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Borrow Book</h1>
+        </div>
+        <ul class="navigation">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'add_book' %}">Add Book</a></li>
+            <li><a href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a href="{% url 'add_librarian' %}">Add Librarian</a></li>
+            <li><a href="{% url 'borrow_book' %}">Borrow Book</a></li>
+            <li><a href="{% url 'return_book' %}">Return Book</a></li>
+            <li><a href="{% url 'book_list' %}">List All Books</a></li>
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <label for="student">Select Student:</label>
+            <select name="student">
+                {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="book">Select Book:</label>
+            <select name="book">
+                {% for book in books %}
+                    <option value="{{ book.id }}">{{ book.title }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="Borrow Book">
+        </form>
+    </div>
+</body>
+</html>
+

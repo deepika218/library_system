@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Return Book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'return_book.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Return Book</h1>
+        </div>
+        <ul class="navigation">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'add_book' %}">Add Book</a></li>
+            <li><a href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a href="{% url 'add_librarian' %}">Add Librarian</a></li>
+            <li><a href="{% url 'borrow_book' %}">Borrow Book</a></li>
+            <li><a href="{% url 'return_book' %}">Return Book</a></li>
+            <li><a href="{% url 'book_list' %}">List All Books</a></li>
+        </ul>
+        <table class="book-list">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Borrowed Book</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for borrowed_book in borrowed_books %}
+                <tr>
+                    <td>{{ borrowed_book.student.name }}</td>
+                    <td>{{ borrowed_book.book.title }}</td>
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="student_id" value="{{ borrowed_book.student.user_id }}">
+                            <input type="hidden" name="book_id" value="{{ borrowed_book.book.id }}">
+                            <input type="submit" value="Return">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+</body>
+</html>

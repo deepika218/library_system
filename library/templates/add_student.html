@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'add_book.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Add Student</h1>
+        </div>
+        <ul class="navigation">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'add_book' %}">Add Book</a></li>
+            <li><a href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a href="{% url 'add_librarian' %}">Add Librarian</a></li>
+            <li><a href="{% url 'borrow_book' %}">Borrow Book</a></li>
+            <li><a href="{% url 'return_book' %}">Return Book</a></li>
+            <li><a href="{% url 'book_list' %}">List All Books</a></li>
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            <br>
+            <label for="user_id">User ID:</label>
+            <input type="text" name="user_id">
+            <br>
+            <input type="submit" value="Add Student">
+        </form>
+    </div>
+</body>
+</html>
